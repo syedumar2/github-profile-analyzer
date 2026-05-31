@@ -57,26 +57,6 @@ npm start
 npm run dev
 ```
 
-### Run Tests
-
-```bash
-npm test
-```
-
-### Example Usage
-
-```javascript
-const analyzer = require('./index');
-
-// Analyze a GitHub user profile
-analyzer.analyzeUser('github-username')
-  .then(result => {
-    console.log(result);
-  })
-  .catch(error => {
-    console.error('Error analyzing profile:', error);
-  });
-```
 
 ## 📁 Project Structure
 
