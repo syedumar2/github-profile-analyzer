@@ -83,17 +83,38 @@ analyzer.analyzeUser('github-username')
 ```
 github-profile-analyzer/
 ├── src/
-│   ├── index.js              # Main entry point
-│   ├── analyzer.js           # Core analysis logic
-│   ├── api/
-│   │   └── github.js         # GitHub API client
-│   └── utils/
-│       └── helpers.js        # Utility functions
-├── test/
-│   └── analyzer.test.js      # Test suite
-├── package.json              # Project dependencies
-├── README.md                 # This file
-└── .gitignore               # Git ignore rules
+│   ├── config/
+│   │   ├── db.js
+│   │   └── init.sql
+│   ├── controllers/
+│   │   ├── githubController.js
+│   │   └── index.js
+│   ├── dao/
+│   │   ├── githubProfileDao.js
+│   │   └── index.js
+│   ├── middleware/
+│   │   └── logger.js
+│   ├── routes/
+│   │   └── githubRoutes.js
+│   ├── services/
+│   │   ├── githubServices.js
+│   │   └── index.js
+│   └── server.js
+├── .env
+├── package-lock.json
+└── package.json
+```
+
+### Directory Overview
+
+* **`config/`**: Contains database connections (`db.js`) and database initialization scripts (`init.sql`).
+* **`controllers/`**: Handles incoming HTTP requests, extracts parameters, and calls the appropriate services.
+* **`dao/`** (Data Access Object): Houses direct database queries and interactions, separating data persistence logic from the business logic.
+* **`middleware/`**: Functions that execute during the request-response lifecycle, such as the request logger (`logger.js`).
+* **`routes/`**: Defines the API endpoints (`githubRoutes.js`) and maps them to their respective controllers.
+* **`services/`**: Contains the core business logic, such as orchestrating data flow or communicating with external APIs (like GitHub).
+* **`server.js`**: The main entry point of the application where the server is initialized and started.
+* **Root Files**: Root-level configuration files including environment variables (`.env`) and Node.js dependency manifests (`package.json`, `package-lock.json`).
 ```
 
 ## 🔧 Troubleshooting
