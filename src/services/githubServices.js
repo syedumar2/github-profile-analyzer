@@ -48,8 +48,8 @@ const analyzeProfile = async (username) => {
       score: initData.followers * 2 + initData.public_repos + total_stars * 3,
     };
 
-    //PERFORM SAVE TO DB
     const result = await GithubProfileDao.addGithubAnalysis(githubAnalysis);
+    result.analyzed_at = result.analyzed_at.toLocaleString();
     return result;
   } catch (error) {
     console.error("Error analyzing profile:", error.message);

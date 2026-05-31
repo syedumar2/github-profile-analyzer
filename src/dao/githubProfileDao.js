@@ -9,13 +9,20 @@ const getPaginatedProfiles = async (page = 1, limit = 10) => {
     [Number(limit), Number(offset)],
   );
 
+  const formattedProfiles = profiles.map((profile) => ({
+    ...profile,
+    analyzed_at: profile.analyzed_at
+      ? new Date(profile.analyzed_at).toLocaleString("en-IN")
+      : null,
+  }));
+
   const [countResult] = await db.pool.query(
     `SELECT COUNT(*) as total FROM github_profiles`,
   );
   const totalItems = countResult[0].total;
   const totalPages = Math.ceil(totalItems / limit);
   return {
-    data: profiles,
+    data: formattedProfiles,
     pagination: {
       currentPage: Number(page),
       itemsPerPage: Number(limit),
