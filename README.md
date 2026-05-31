@@ -8,6 +8,7 @@ A JavaScript-based tool for analyzing and visualizing GitHub user profiles, incl
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [API Routes](#api-routes)
 - [Project Structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -57,6 +58,46 @@ npm start
 npm run dev
 ```
 
+## 🔌 API Routes
+
+### 1. Analyze GitHub Profile by Username
+
+**Endpoint:** `GET /gpa/analyze/:username`
+
+**Description:** Retrieves and analyzes a GitHub user profile by username.
+
+**Parameters:**
+- `username` (string, required): The GitHub username to analyze
+
+**Example Request:**
+```bash
+curl https://github-profile-analyzer-production-31a0.up.railway.app/gpa/analyze/syedumar2
+```
+
+**Response:**
+Returns detailed profile analysis including repositories, statistics, activity metrics, and language composition.
+
+---
+
+### 2. Retrieve All Analyzed Profiles (Paginated)
+
+**Endpoint:** `GET /gpa/analysis`
+
+**Description:** Retrieves all previously analyzed GitHub profiles with pagination support.
+
+**Query Parameters:**
+- `page` (number, optional): Page number for pagination (default: 1)
+- `limit` (number, optional): Number of results per page (default: 10)
+
+**Example Request:**
+```bash
+curl "https://github-profile-analyzer-production-31a0.up.railway.app/gpa/analysis?page=1&limit=10"
+```
+
+**Response:**
+Returns a paginated list of all analyzed GitHub profiles.
+
+---
 
 ## 📁 Project Structure
 
@@ -95,7 +136,6 @@ github-profile-analyzer/
 * **`services/`**: Contains the core business logic, such as orchestrating data flow or communicating with external APIs (like GitHub).
 * **`server.js`**: The main entry point of the application where the server is initialized and started.
 * **Root Files**: Root-level configuration files including environment variables (`.env`) and Node.js dependency manifests (`package.json`, `package-lock.json`).
-```
 
 ## 🔧 Troubleshooting
 
